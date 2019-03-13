@@ -73,6 +73,10 @@ exports.function = function(event: IDepositStakeEvent, db: IStore) {
 ```
 위의 예제는 IDepositStakeEvent 의 depositer로 deposit을 한 모든 sender와 deposit양을 list 형태로 DB에 저장하는 예제 입니다. 위의 예제처럼 function단위로 쉽게 event processor를 등록하여 event를 핸들링 할 수 있습니다.
 
-### Query Service
+### Service
 
-Query Service는 Function에서 가공하여 저장한 이벤트 정보를 쉽게 조회할 수 있도록 endpoint를 제공합니다. 기본적으로 graphql endpoint가 제공되며 DB에 저장한 Entity들을 조회할 수 있는 findById, findAll, findByProperty, findFirst, findLast의 api가 자동생성 됩니다. 
+Service는 Function에서 가공하여 저장한 이벤트 정보를 쉽게 받아보거나 조회할 수 있는 interface입니다.
+
+- webhook: 사용자가 지정한 URL로 이벤트 정보를 전달합니다. raw 이벤트 뿐 아니라 사용자가 지정한 function에서 처리된 정보를 실시간으로 받아볼 수 있습니다.
+- graphql endpoint: DB에 저장한 Entity들을 조회할 수 있는 findById, findAll, findByProperty, findFirst, findLast의 api가 자동생성 됩니다. 
+
